@@ -32,7 +32,7 @@ legend {
 label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   font-weight: bold;
 }
 
@@ -42,6 +42,11 @@ label {
 // While most of our form styles require extra classes, some basic normalization
 // is required to ensure optimum display with or without those classes to better
 // address browser inconsistencies.
+
+// Remove all safari and chrome focus outlines
+input, textarea, select {
+	outline: none;
+}
 
 // Override content-box in Normalize (* isn't specific enough)
 input[type="search"] {
@@ -72,11 +77,58 @@ select[size] {
   height: auto;
 }
 
+/* standard select styling */
+select {
+  background: $orange url("../img/icon-selectarrow.png") no-repeat 94% 50%;
+  border: 0;
+  height: 4rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 0 3rem 0 2rem;
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+/* remove arrows from Firefox */
+.select-wrap {
+  border-radius: 2rem;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  &:before {
+    content: " ";
+    //background: transparent url("../img/icon-selectarrow.png") no-repeat 50% 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 20px;
+    height: 15px;
+    margin-top: -8px;
+    display: inline-block;
+    pointer-events: none;
+  }
+    
+  select {
+    -moz-appearance: treeitem;
+  }
+}
+
+/* remove arrows from IE10 */
+select::-ms-expand {
+  display: none;
+}
+
 // Focus for file, radio, and checkbox
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   @include tab-focus;
+}
+
+// Submit button fix padding
+input[type="submit"]{
+	padding: $padding-small-vertical $padding-base-horizontal;
 }
 
 // Adjust output element
@@ -122,7 +174,7 @@ output {
   background-color: $input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid $input-border;
-  border-radius: $input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  border-radius: $input-border-radius-small; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
 

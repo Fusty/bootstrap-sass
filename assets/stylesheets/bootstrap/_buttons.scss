@@ -9,16 +9,21 @@
 .btn {
   display: inline-block;
   margin-bottom: 0; // For input.btn
+  font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   white-space: nowrap;
-  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-default, $line-height-base, $btn-border-radius-base);
   @include user-select(none);
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &,
   &:active,
@@ -31,17 +36,13 @@
 
   &:hover,
   &:focus,
-  &.focus {
-    color: $btn-default-color;
+  &.focus,
+  &:active,
+  &.active{
+    background: $btn-default-color;
     text-decoration: none;
   }
 
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
-  }
 
   &.disabled,
   &[disabled],
@@ -65,11 +66,74 @@ a.btn {
 // Alternate buttons
 // --------------------------------------------------
 
-.btn-default {
-  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-}
 .btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.btn-primary.outline {
+  @include button-variant($btn-default-border, $btn-outline-bg, $btn-default-border);
+}
+.btn-primary.overlay {
+  @include button-variant($btn-default-color, $btn-overlay-bg, $btn-default-border);
+}
+.btn-blue {
+  @include button-variant(#fff, $blue-sky, $blue-sky);	
+}
+.btn-blue.outline {
+  @include button-variant($blue-sky, $btn-outline-bg, $blue-sky);	
+}
+.btn-blue.overlay {
+  @include button-variant(#fff, $btn-overlay-bg, $blue-sky);	
+}
+.btn-darkblue {
+  @include button-variant(#fff, $blue-navy, $blue-navy);	
+}
+.btn-darkblue.outline {
+  @include button-variant($blue-navy, $btn-outline-bg, $blue-navy);	
+}
+.btn-darkblue.overlay {
+  @include button-variant(#fff, $btn-overlay-bg, $blue-navy);	
+}
+.btn-yellow {
+  @include button-variant($black, $yellow, $yellow);	
+}
+.btn-yellow.outline {
+  @include button-variant($yellow, $btn-outline-bg, $yellow);	
+}
+.btn-yellow.overlay {
+  @include button-variant(#fff, $btn-overlay-bg, $yellow);	
+}
+.btn-red {
+  @include button-variant(#fff, $red, $red);	
+}
+.btn-red.outline {
+  @include button-variant($red, $btn-outline-bg, $red);	
+}
+.btn-red.overlay {
+  @include button-variant(#fff, $btn-overlay-bg, $red);	
+}
+.btn-magenta {	
+  @include button-variant(#fff, $magenta, $magenta);
+}
+.btn-magenta.outline {	
+  @include button-variant($magenta, $btn-outline-bg, $magenta);
+}
+.btn-magenta.overlay {	
+  @include button-variant(#fff, $btn-overlay-bg, $magenta);
+}
+.btn-white {	
+  @include button-variant($orange, #fff, #fff);
+  
+  &:hover{ color: $orange; }
+}
+.btn-white.outline {	
+  @include button-variant(#fff, $btn-outline-bg, #fff);
+  
+  &:hover{ color: $blue-navy; }
+}
+.btn-white.overlay {	
+  @include button-variant(#fff, $btn-overlay-bg, #fff);
+  
+  &:hover{ color: $blue-navy; }
 }
 // Success appears as green
 .btn-success {
@@ -141,7 +205,7 @@ a.btn {
   @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
 }
 .btn-xs {
-  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
+  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-xsmall, $line-height-small, $btn-border-radius-small);
 }
 
 

@@ -7,31 +7,44 @@
   color: $color;
   background-color: $background;
   border-color: $border;
+  outline: none;
 
   &:focus,
   &.focus {
     color: $color;
-    background-color: darken($background, 10%);
-        border-color: darken($border, 25%);
+    background-color: $background;
+    border-color: $border;
+    outline: none;
+    //color: $color;
+    //background-color: darken($background, 10%);
+    //    border-color: darken($border, 25%);
   }
   &:hover {
-    color: $color;
-    background-color: darken($background, 10%);
-        border-color: darken($border, 12%);
+    color: #fff;
+    background-color: $border;
+        border-color: $border;
   }
   &:active,
   &.active,
   .open > &.dropdown-toggle {
-    color: $color;
-    background-color: darken($background, 10%);
-        border-color: darken($border, 12%);
+    color: #fff;
+    background-color: $border;
+        border-color: $border;
+    outline: none;
+    //color: $color;
+    //background-color: darken($background, 10%);
+    //   border-color: darken($border, 12%);
 
     &:hover,
     &:focus,
     &.focus {
-      color: $color;
-      background-color: darken($background, 17%);
-          border-color: darken($border, 25%);
+    color: #fff;
+    background-color: $border;
+        border-color: $border;
+    outline: none;
+      //color: $color;
+      //background-color: darken($background, 17%);
+      //    border-color: darken($border, 25%);
     }
   }
   &:active,
@@ -45,7 +58,7 @@
     &:hover,
     &:focus,
     &.focus {
-      background-color: $background;
+      background-color: $border;
           border-color: $border;
     }
   }
